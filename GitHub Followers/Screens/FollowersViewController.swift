@@ -69,7 +69,7 @@ class FollowersViewController: GFDataLoadingViewController {
         })
     }
     
-    func getFollowers(username: String, page: Int) {
+    private func getFollowers(username: String, page: Int) {
         showLoadingScreen()
         
         NetworkManager.shared.getFollowers(for: username, page: page) { [weak self] (result) in
@@ -93,7 +93,7 @@ class FollowersViewController: GFDataLoadingViewController {
         }
     }
     
-    func updateData(on followers: [Follower]) {
+    private func updateData(on followers: [Follower]) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Follower>()
         snapshot.appendSections([.main])
         snapshot.appendItems(followers)
@@ -110,7 +110,7 @@ class FollowersViewController: GFDataLoadingViewController {
         navigationItem.searchController = searchController
     }
     
-    @objc func addButtonTapped() {
+    @objc private func addButtonTapped() {
         showLoadingScreen()
         
         NetworkManager.shared.getUserInfo(for: username) { [weak self] (result) in
