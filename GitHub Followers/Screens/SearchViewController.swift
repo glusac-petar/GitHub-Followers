@@ -30,13 +30,13 @@ class SearchViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
-    func createDismissKeyboardTapGesture() {
+    private func createDismissKeyboardTapGesture() {
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
     }
     
     
-    @objc func pushFollowerListViewController() {
+    @objc private func pushFollowerListViewController() {
         guard isUsernameEntered else {
             presentGFAlertOnMainThread(title: "Empty username", message: "Please enter a username. We need to know who to look for 😀.", buttonTitle: "Ok")
             return
@@ -46,7 +46,7 @@ class SearchViewController: UIViewController {
         navigationController?.pushViewController(followersVC, animated: true)
     }
     
-    func configureLogoImageView() {
+    private func configureLogoImageView() {
         view.addSubviews(logoImageView)
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -58,7 +58,7 @@ class SearchViewController: UIViewController {
         ])
     }
     
-    func configureUsernameTextField() {
+    private func configureUsernameTextField() {
         view.addSubview(usernameTextField)
         usernameTextField.delegate = self
         
@@ -70,7 +70,7 @@ class SearchViewController: UIViewController {
         ])
     }
     
-    func configureActionButton() {
+    private func configureActionButton() {
         view.addSubview(actionButton)
         actionButton.addTarget(self, action: #selector(pushFollowerListViewController), for: .touchUpInside)
         
