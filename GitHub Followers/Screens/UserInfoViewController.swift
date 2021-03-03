@@ -40,12 +40,12 @@ class UserInfoViewController: UIViewController {
         getUserInfo()
     }
     
-    func configureViewController() {
+    private func configureViewController() {
         view.backgroundColor = .systemBackground
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissViewController))
     }
     
-    func getUserInfo() {
+    private func getUserInfo() {
         NetworkManager.shared.getUserInfo(for: username) { [weak self] (result) in
             guard let self = self else { return }
             
@@ -63,7 +63,7 @@ class UserInfoViewController: UIViewController {
         }
     }
     
-    func layoutUI() {
+    private func layoutUI() {
         view.addSubviews(headerView, itemViewOne, itemViewTwo, dateLabel)
         
         let padding: CGFloat = 20
@@ -92,14 +92,14 @@ class UserInfoViewController: UIViewController {
         ])
     }
     
-    func add(childViewController: UIViewController, to containerView: UIView) {
+    private func add(childViewController: UIViewController, to containerView: UIView) {
         addChild(childViewController)
         containerView.addSubview(childViewController.view)
         childViewController.view.frame = containerView.bounds
         childViewController.didMove(toParent: self)
     }
     
-    @objc func dismissViewController() {
+    @objc private func dismissViewController() {
         dismiss(animated: true)
     }
     
