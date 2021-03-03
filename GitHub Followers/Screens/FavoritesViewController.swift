@@ -25,12 +25,12 @@ class FavoritesViewController: GFDataLoadingViewController {
         getFavorites()
     }
     
-    func configureViewController() {
+    private func configureViewController() {
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
-    func configureTableView() {
+    private func configureTableView() {
         view.addSubview(tableView)
 
         tableView.frame = view.bounds
@@ -41,7 +41,7 @@ class FavoritesViewController: GFDataLoadingViewController {
         tableView.removeExcessCells()
     }
     
-    func getFavorites() {
+    private func getFavorites() {
         PersistenceManager.retrieveFavorites(completed: { [weak self] (result) in
             guard let self = self else { return }
             
